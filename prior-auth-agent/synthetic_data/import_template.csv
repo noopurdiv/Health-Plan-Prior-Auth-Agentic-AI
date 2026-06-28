@@ -1,0 +1,3 @@
+patient_age,patient_sex,diagnosis_code,diagnosis_label,procedure_code,procedure_label,clinical_notes,urgency
+58,F,Z12.11,Colorectal cancer screening,45378,Colonoscopy,58F no prior screening,routine
+45,F,M54.5,Low back pain,72148,MRI lumbar spine without contrast,Failed 8 weeks PT,routine

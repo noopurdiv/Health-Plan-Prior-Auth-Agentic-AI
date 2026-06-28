@@ -1,0 +1,21 @@
+# Secrets and local config
+.env
+
+# Runtime / generated data
+clearauth.db
+chroma_db/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+~$*

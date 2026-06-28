@@ -1,16 +1,15 @@
 # Secrets and local config
-.env
+prior-auth-agent/.env
 
 # Runtime / generated data
-clearauth.db
-chroma_db/
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.venv/
-venv/
-env/
+prior-auth-agent/clearauth.db
+prior-auth-agent/chroma_db/
+prior-auth-agent/__pycache__/
+prior-auth-agent/**/__pycache__/
+prior-auth-agent/**/*.py[cod]
+prior-auth-agent/.pytest_cache/
+prior-auth-agent/.venv/
+prior-auth-agent/venv/
 
 # OS / editor
 .DS_Store
