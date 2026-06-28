@@ -153,6 +153,8 @@ Wait until the terminal shows `Pre-analyzed N pending request(s)` before demoing
 | `MANUAL_REVIEW_MINUTES` | `20` | Minutes saved per completed review (KPI) |
 
 ---
+## Demo
+
 
 ## 3-Minute Demo Script
 
@@ -298,6 +300,13 @@ python -m pytest tests/ -v
 
 ---
 
-## License & submission
+## About
 
-Built by Noopur Divekar
+Built by **Noopur Shekhar Divekar** as a Cotiviti GenAI Developer 
+Intern assessment submission.
+
+- 🔗 [LinkedIn](https://linkedin.com/in/noopurd)
+- 🌐 [Portfolio](https://noopurdiv.github.io)
+- 📧 noopur.div188@gmail.com
+
+M.S. Data Science, Indiana University Bloomington 
