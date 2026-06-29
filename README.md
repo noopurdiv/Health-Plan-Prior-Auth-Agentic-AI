@@ -37,7 +37,7 @@ Built as a **Cotiviti GenAI Developer Intern assessment** proof of concept, addr
 Prior authorization sits at the intersection of **clinical criteria** and **payer policy content** — exactly where Cotiviti operates across Treatment, Payment, and Operations (TPO).
 
 | Topic | ClearAuth Implementation |
-|-------|--------------------------| 
+|-------|--------------------------|
 | **Topic 2 — Clinical Decision Making & Agentic GenAI** | LangGraph agent with chain reasoning (parse → retrieve → reason), classification of coverage decisions, confidence scoring, and human-in-the-loop escalation |
 | **Topic 3 — Content Management in Health Care** | Ingests CMS/NCD policy PDFs into ChromaDB, retrieves exact policy excerpts, cites source documents with page numbers, and links reviewers directly to source PDFs |
 
@@ -153,7 +153,6 @@ python ingest_pdfs.py
 
 # 7. Start the server
 uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
-# Windows helper: .\run_server.ps1  (kills stuck port, excludes scripts/ from reload)
 ```
 
 Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` in the terminal before demoing.
@@ -180,7 +179,6 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 | `404` on model name | Ensure `ANTHROPIC_MODEL=claude-sonnet-4-6` in `.env` |
 | `httpx` / `anthropic` error | `requirements.txt` pins `httpx==0.27.2` — reinstall with `pip install -r requirements.txt` |
 | Port 8000 not loading | Kill stuck uvicorn: `Get-NetTCPConnection -LocalPort 8000` → `Stop-Process -Id <PID> -Force` |
-| Reload loop after editing | Use `run_server.ps1` to exclude `scripts/` and `*.docx` from file watching |
 
 ---
 
