@@ -187,7 +187,7 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 
 
 ## 📂 Project Structure
-Health-Plan-Prior-Auth-Agentic-AI/
+'''Health-Plan-Prior-Auth-Agentic-AI/
 ├── frontend/
 │ └── index.html # Dashboard UI (single-page app)
 ├── knowledge_base/ # Policy PDFs — add your own here
@@ -205,7 +205,7 @@ Health-Plan-Prior-Auth-Agentic-AI/
 ├── ingest_pdfs.py # One-time PDF → ChromaDB ingestion
 ├── eval.py # Benchmark evaluation script
 ├── requirements.txt
-└── .env.example
+└── .env.example'''
 
 
 ## 📡 API Reference
