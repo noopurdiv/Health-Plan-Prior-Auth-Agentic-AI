@@ -198,7 +198,6 @@ Health-Plan-Prior-Auth-Agentic-AI/
 │   ├── api/                     # FastAPI routes + CSV import handler
 │   ├── db/                      # SQLAlchemy models, seed, pre-analyze
 │   └── rag/                     # PDF ingest + ChromaDB retriever
-├── docs/                        # Architecture diagrams
 ├── tests/                       # Pytest test suite
 ├── ingest_pdfs.py               # One-time PDF → ChromaDB ingestion
 ├── eval.py                      # Benchmark evaluation script
