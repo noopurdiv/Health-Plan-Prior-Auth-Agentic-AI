@@ -184,7 +184,7 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 | Port 8000 not loading | Kill stuck uvicorn: `Get-NetTCPConnection -LocalPort 8000` → `Stop-Process -Id <PID> -Force` |
 | Reload loop after editing | Use `run_server.ps1` to exclude `scripts/` and `*.docx` from file watching |
 
----
+
 
 ## 📂 Project Structure
 Health-Plan-Prior-Auth-Agentic-AI/
@@ -207,9 +207,6 @@ Health-Plan-Prior-Auth-Agentic-AI/
 ├── requirements.txt
 └── .env.example
 
-text
-
----
 
 ## 📡 API Reference
 
