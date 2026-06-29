@@ -80,8 +80,6 @@ flowchart LR
     SQL --> H
 ```
 
-> Full diagram: [docs/langgraph_agent_diagram.svg](docs/langgraph_agent_diagram.svg) · [docs/langgraph_agent_diagram.md](docs/langgraph_agent_diagram.md)
-
 ### Pipeline Stages
 
 | Stage | Description |
