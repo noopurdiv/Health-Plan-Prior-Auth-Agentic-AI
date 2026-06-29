@@ -11,7 +11,7 @@
 
 **An agentic AI system that automates first-pass prior authorization review using RAG, LangGraph, and human-in-the-loop decision routing.**
 
-[Quick Start](#setup-fresh-clone) · [Architecture](#architecture) · [API Reference](#api-reference) · [Demo](#demo)
+[Quick Start](#setup-fresh-clone) · [Architecture](#architecture) · [API Reference](#api-reference) · [Demo](https://github.com/noopurdiv/Health-Plan-Prior-Auth-Agentic-AI/blob/main/ClearAuth%20Demo%20Video.mp4)
 
 </div>
 
@@ -204,6 +204,7 @@ Health-Plan-Prior-Auth-Agentic-AI/
 ├── tests/                       # Pytest test suite
 ├── ingest_pdfs.py               # One-time PDF → ChromaDB ingestion
 ├── eval.py                      # Benchmark evaluation script
+├── ClearAuth Demo Video.mp4     # Demo walkthrough video
 ├── requirements.txt
 └── .env.example
 ```
@@ -243,6 +244,12 @@ Run the test suite:
 ```bash
 python -m pytest tests/ -v
 ```
+
+---
+
+## Demo
+
+[Watch the ClearAuth demo walkthrough](https://github.com/noopurdiv/Health-Plan-Prior-Auth-Agentic-AI/blob/main/ClearAuth%20Demo%20Video.mp4)
 
 ---
 
