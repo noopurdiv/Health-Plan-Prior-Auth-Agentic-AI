@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏥 ClearAuth
+# ClearAuth
 ### Health Plan Prior Authorization Intelligence
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
@@ -11,13 +11,13 @@
 
 **An agentic AI system that automates first-pass prior authorization review using RAG, LangGraph, and human-in-the-loop decision routing.**
 
-[🚀 Quick Start](#setup-fresh-clone) · [🏗 Architecture](#architecture) · [📡 API Reference](#api-reference) · [📊 Demo](#demo)
+[Quick Start](#setup-fresh-clone) · [Architecture](#architecture) · [API Reference](#api-reference) · [Demo](#demo)
 
 </div>
 
 ---
 
-## 📌 What is ClearAuth?
+## What is ClearAuth?
 
 Prior authorization delays care and costs health plans **billions in manual review hours** each year. ClearAuth is a proof-of-concept payer intelligence system that:
 
@@ -26,24 +26,24 @@ Prior authorization delays care and costs health plans **billions in manual revi
 - **Recommends** APPROVE / FLAG / ESCALATE with confidence scores and policy citations
 - **Routes every case through a human reviewer** before any decision is logged
 
-> ⚠️ **All demo data is 100% synthetic — no real PHI is used or stored.**
+> **All demo data is 100% synthetic — no real PHI is used or stored.**
 
 Built as a **Cotiviti GenAI Developer Intern assessment** proof of concept, addressing Topics 2 (Clinical Decision Making & Agentic GenAI) and 3 (Content Management in Health Care).
 
 ---
 
-## 🎯 Why Both Assessment Topics?
+## Why Both Assessment Topics?
 
 Prior authorization sits at the intersection of **clinical criteria** and **payer policy content** — exactly where Cotiviti operates across Treatment, Payment, and Operations (TPO).
 
 | Topic | ClearAuth Implementation |
-|-------|--------------------------|
+|-------|--------------------------| 
 | **Topic 2 — Clinical Decision Making & Agentic GenAI** | LangGraph agent with chain reasoning (parse → retrieve → reason), classification of coverage decisions, confidence scoring, and human-in-the-loop escalation |
 | **Topic 3 — Content Management in Health Care** | Ingests CMS/NCD policy PDFs into ChromaDB, retrieves exact policy excerpts, cites source documents with page numbers, and links reviewers directly to source PDFs |
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -80,14 +80,14 @@ flowchart LR
     SQL --> H
 ```
 
-> 📐 Full diagram: [docs/langgraph_agent_diagram.svg](docs/langgraph_agent_diagram.svg) · [docs/langgraph_agent_diagram.md](docs/langgraph_agent_diagram.md)
+> Full diagram: [docs/langgraph_agent_diagram.svg](docs/langgraph_agent_diagram.svg) · [docs/langgraph_agent_diagram.md](docs/langgraph_agent_diagram.md)
 
 ### Pipeline Stages
 
 | Stage | Description |
 |-------|-------------|
 | **1. Parser** | Structures the prior auth request (age, sex, ICD-10, CPT, procedure, urgency, clinical notes) into a retrieval query |
-| **2. Retriever** | Embeds the query with `all-MiniLM-L6-v2`, searches ChromaDB for top policy chunks (relevance ≥ 0.35), attaches source file + page metadata |
+| **2. Retriever** | Embeds the query with `all-MiniLM-L6-v2`, searches ChromaDB for top policy chunks (relevance >= 0.35), attaches source file + page metadata |
 | **3. Reasoner** | Claude `claude-sonnet-4-6` evaluates the request against retrieved excerpts **only** — anti-hallucination rules enforced; low confidence forces ESCALATE |
 | **4. HITL** | LangGraph interrupts before `log_decision`; reviewer sees AI rationale + policy citations, then Approves, Rejects (reason required), or Escalates |
 
@@ -105,26 +105,26 @@ flowchart LR
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🖥 Reviewer Dashboard
+### Reviewer Dashboard
 - Pending queue with AI decision tags, expected labels (synthetic benchmark), and confidence scores
-- KPI row: Pending, Approved, Rejected, Escalated, **Hours Saved** (reviews × 20 min)
+- KPI row: Pending, Approved, Rejected, Escalated, **Hours Saved** (reviews x 20 min)
 - **Import CSV** for bulk request upload · **+ New Request** modal for ad-hoc cases
 
-### 🔍 Case Detail View
+### Case Detail View
 - Clinical request summary, evidence & rationale, step-by-step reasoning trace
 - Retrieved policy chunks with relevance scores and **page-level PDF links**
 - Approve / Reject (reason required) / Escalate with full review chain
 
-### 🛡 Data & Governance
+### Data & Governance
 - **Synthetic data only** — zero real patient identifiers
 - Full 3-table audit trail: `prior_auth_requests` → `agent_analyses` → `human_decisions`
 - Auto-escalation rules: emergent urgency, no policy found, or confidence < 60%
 
 ---
 
-## 🚀 Setup (Fresh Clone)
+## Setup (Fresh Clone)
 
 **Prerequisites:** Python 3.11+, [Anthropic API key](https://console.anthropic.com/), policy PDFs in `knowledge_base/`
 
@@ -160,7 +160,7 @@ uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
 
 Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` in the terminal before demoing.
 
-### ⚙️ Environment Variables
+### Environment Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
@@ -172,7 +172,7 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 | `HF_HUB_OFFLINE` | `1` | Use cached embedding model offline |
 | `MANUAL_REVIEW_MINUTES` | `20` | Minutes saved per completed review (KPI) |
 
-### 🔧 Troubleshooting
+### Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
@@ -184,31 +184,35 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 | Port 8000 not loading | Kill stuck uvicorn: `Get-NetTCPConnection -LocalPort 8000` → `Stop-Process -Id <PID> -Force` |
 | Reload loop after editing | Use `run_server.ps1` to exclude `scripts/` and `*.docx` from file watching |
 
+---
 
+## Project Structure
 
-## 📂 Project Structure
+```
 Health-Plan-Prior-Auth-Agentic-AI/
 ├── frontend/
-│ └── index.html # Dashboard UI (single-page app)
-├── knowledge_base/ # Policy PDFs — add your own here
-├── chroma_db/ # Vector store (auto-created by ingest)
+│   └── index.html               # Dashboard UI (single-page app)
+├── knowledge_base/              # Policy PDFs — add your own here
+├── chroma_db/                   # Vector store (auto-created by ingest)
 ├── synthetic_data/
-│ ├── sample_requests.json # 50 synthetic cases + expected decisions
-│ └── import_template.csv # CSV bulk import template
+│   ├── sample_requests.json     # 50 synthetic cases + expected decisions
+│   └── import_template.csv      # CSV bulk import template
 ├── src/
-│ ├── agent/ # LangGraph nodes + graph definition
-│ ├── api/ # FastAPI routes + CSV import handler
-│ ├── db/ # SQLAlchemy models, seed, pre-analyze
-│ └── rag/ # PDF ingest + ChromaDB retriever
-├── docs/ # Architecture diagrams
-├── tests/ # Pytest test suite
-├── ingest_pdfs.py # One-time PDF → ChromaDB ingestion
-├── eval.py # Benchmark evaluation script
+│   ├── agent/                   # LangGraph nodes + graph definition
+│   ├── api/                     # FastAPI routes + CSV import handler
+│   ├── db/                      # SQLAlchemy models, seed, pre-analyze
+│   └── rag/                     # PDF ingest + ChromaDB retriever
+├── docs/                        # Architecture diagrams
+├── tests/                       # Pytest test suite
+├── ingest_pdfs.py               # One-time PDF → ChromaDB ingestion
+├── eval.py                      # Benchmark evaluation script
 ├── requirements.txt
 └── .env.example
+```
 
+---
 
-## 📡 API Reference
+## API Reference
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -227,7 +231,7 @@ Health-Plan-Prior-Auth-Agentic-AI/
 
 ---
 
-## 🧪 Evaluation & Testing
+## Evaluation & Testing
 
 Run the benchmark against synthetic expected labels:
 
@@ -244,7 +248,7 @@ python -m pytest tests/ -v
 
 ---
 
-## 👩‍💻 About
+## About
 
 Built by **Noopur Shekhar Divekar** — M.S. Data Science, Indiana University Bloomington
 
