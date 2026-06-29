@@ -187,3 +187,70 @@ Open **http://localhost:8000** — wait for `Pre-analyzed N pending request(s)` 
 ---
 
 ## 📂 Project Structure
+Health-Plan-Prior-Auth-Agentic-AI/
+├── frontend/
+│ └── index.html # Dashboard UI (single-page app)
+├── knowledge_base/ # Policy PDFs — add your own here
+├── chroma_db/ # Vector store (auto-created by ingest)
+├── synthetic_data/
+│ ├── sample_requests.json # 50 synthetic cases + expected decisions
+│ └── import_template.csv # CSV bulk import template
+├── src/
+│ ├── agent/ # LangGraph nodes + graph definition
+│ ├── api/ # FastAPI routes + CSV import handler
+│ ├── db/ # SQLAlchemy models, seed, pre-analyze
+│ └── rag/ # PDF ingest + ChromaDB retriever
+├── docs/ # Architecture diagrams
+├── tests/ # Pytest test suite
+├── ingest_pdfs.py # One-time PDF → ChromaDB ingestion
+├── eval.py # Benchmark evaluation script
+├── requirements.txt
+└── .env.example
+
+text
+
+---
+
+## 📡 API Reference
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/` | Dashboard UI |
+| `GET` | `/api/health` | Health check + ChromaDB document count |
+| `GET` | `/api/stats` | Hours saved KPI + decision counts |
+| `GET` | `/api/pending` | Pending requests with cached AI analysis |
+| `GET` | `/api/requests/{id}` | Full request + analysis + decision |
+| `POST` | `/api/requests/{id}/analyze` | Return cached analysis |
+| `POST` | `/api/analyze` | Submit new request and run analysis |
+| `POST` | `/api/decision` | Submit human review (approve / reject / escalate) |
+| `POST` | `/api/import/csv` | Bulk import requests from CSV |
+| `GET` | `/api/history` | Completed requests |
+| `GET` | `/api/history/{id}` | History detail |
+| `GET` | `/api/policy/pdf/{filename}` | Serve policy PDF from `knowledge_base/` |
+
+---
+
+## 🧪 Evaluation & Testing
+
+Run the benchmark against synthetic expected labels:
+
+```bash
+python eval.py              # Human-readable output
+python eval.py --json       # Machine-readable JSON output
+```
+
+Run the test suite:
+
+```bash
+python -m pytest tests/ -v
+```
+
+---
+
+## 👩‍💻 About
+
+Built by **Noopur Shekhar Divekar** — M.S. Data Science, Indiana University Bloomington
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-noopurd-0A66C2?logo=linkedin)](https://linkedin.com/in/noopurd)
+[![Portfolio](https://img.shields.io/badge/Portfolio-noopurdiv.github.io-000?logo=github)](https://noopurdiv.github.io)
+[![Email](https://img.shields.io/badge/Email-noopur.div188@gmail.com-EA4335?logo=gmail)](mailto:noopur.div188@gmail.com)
